@@ -17,12 +17,21 @@
   (define (next-token)
     (define yamm-lexer
       (lexer
-       [(from/to "$e" "e$")
-        (token 'SEXP-TOK (trim-ends "$e" lexeme "e$"))]
-       [any-char (token 'YAML-CHAR-TOK lexeme))])
+       [(from/to "$e " " e$")
+        (token 'SEXP-TOK (trim-ends "$e " lexeme " e$"))]
+       [any-char (token 'YAML-CHAR-TOK lexeme)]))
       (yamm-lexer port))
     next-token)
 
 (provide
  (contract-out
   [make-tokenizer (input-port? . -> . (-> yamm-token?))]))
+
+(module+ test
+  (check-equal?
+   (apply-tokenizer-maker make-tokenizer "ok")
+   (list (token 'YAML-CHAR-TOK "o")
+         (token 'YAML-CHAR-TOK "k")))
+  (check-equal?
+   (apply-tokenizer-maker make-tokenizer "$e (+ 2 2) e$")
+   (list (token 'SEXP-TOK "(+ 2 2)"))))

@@ -6,10 +6,12 @@ yamm is a yaml preprocessing language that allows you to embed lisp expressions 
    
 #+BEGIN_SRC
 --- # The yamms are the powers that be
-  processed: $ (equal? 5 5.0) $
-  $ (for/hash ([i (in-range 5)]
+  processed: $e (equal? 5 5.0) e$
+  $e (for/hash ([i (in-range 5)]
                [j '("bunch" "of" "values" "here")])
-      (values i j) $
+      (values i j) e$
+
+$e (list "this" "is" "a" "list") e$
 #+END_SRC
 
 Will give:
@@ -21,4 +23,9 @@ Will give:
   2: of
   3: values
   4: here
+
+- this
+- is
+- a
+- list
 #+END_SRC
