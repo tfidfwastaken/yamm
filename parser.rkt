@@ -1,5 +1,5 @@
 #lang brag
 
-yamm-program : (yaml | sexp)*
-yaml         : YAML-CHAR-TOK
+yamm-program : (yaml-char | sexp)*
+yaml-char    : YAML-CHAR-TOK
 sexp         : SEXP-TOK
