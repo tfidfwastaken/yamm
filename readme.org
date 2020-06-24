@@ -1,0 +1,24 @@
+* yamm
+
+yamm is a yaml preprocessing language that allows you to embed lisp expressions into your yaml.
+
+** Proposal
+   
+#+BEGIN_SRC
+--- # The yamms are the powers that be
+  processed: $ (equal? 5 5.0) $
+  $ (for/hash ([i (in-range 5)]
+               [j '("bunch" "of" "values" "here")])
+      (values i j) $
+#+END_SRC
+
+Will give:
+
+#+BEGIN_SRC 
+--- # The yamms are the powers that be
+  processed: Yes
+  1: bunch
+  2: of
+  3: values
+  4: here
+#+END_SRC
