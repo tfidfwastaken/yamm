@@ -1,6 +1,6 @@
 * yamm
 
-yamm is a yaml preprocessing language that allows you to embed lisp expressions into your yaml.
+yamm is a yaml preprocessing language I made to practice making DSL's.
 
 ** Proposal
    
@@ -29,3 +29,7 @@ Will give:
 - a
 - list
 #+END_SRC
+
+It kinda works, but has a lot of usability and sanity issues that I do not want to really fix at the moment. YAML is quite messy to deal with.
+
+If you need something like this, have a look at [[https://dhall-lang.org/][Dhall]].

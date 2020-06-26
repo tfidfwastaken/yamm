@@ -1,4 +1,4 @@
 #lang racket/base
-(module reader yamm
+(module reader racket/base
   (require "reader.rkt")
   (provide read-syntax))
